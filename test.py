@@ -32,18 +32,18 @@ cbar = plt.colorbar(m)
 cbar.ax.set_ylabel("dB")
 plt.title("Spec")
 
-# index50番目のパワースペクトル
+# 平均のパワースペクトル
 pidx = 50
 fx = add_subplot()
-plt.plot(f,np.log(np.abs(aspec[:,pidx])),label='linear')
-plt.title("time" + "{:.2f}".format(t[pidx]) + "(i:" + str(pidx) +")")
+plt.plot(f,np.log(np.abs(np.mean(aspec,axis=1)))*10,label='linear')
+plt.title("mean-time")
 
 # 再生成(元に戻してるだけ:テスト)
-x = fft(np.log(aspec[:,pidx])) #複素数のまま流す
+x = fft(np.log(np.mean(aspec,axis=1))) #複素数のまま流す
 ans = np.exp(ifft(x))
 fx = add_subplot()
 fx.plot(f,np.log(np.abs(ans))*10,label='linear')
-plt.title("UNC")
+plt.title("mean-UNC")
 fig.tight_layout()
 plt.show()
 
