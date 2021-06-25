@@ -1,3 +1,8 @@
+#
+# 波形を読み込んでまた元に戻すテスト
+#pathとresult_pathを指定してください。
+#
+
 from lib import wavefile
 from scipy import signal
 import numpy as np
