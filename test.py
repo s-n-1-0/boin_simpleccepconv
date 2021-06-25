@@ -39,10 +39,14 @@ cbar.ax.set_ylabel("dB")
 plt.title("Spec")
 
 # 平均のパワースペクトル
-pidx = 50
 fx = add_subplot()
 plt.plot(f,np.log(np.abs(np.mean(aspec,axis=1)))*10,label='linear')
-plt.title("mean-time")
+plt.title("mean-power")
+
+# 平均のCep
+fx = add_subplot()
+plt.plot(f,ifft(np.log(np.mean(aspec,axis=1))),label='linear')
+plt.title("mean-cep")
 
 # 再生成(元に戻してるだけ:テスト)
 x = fft(np.log(np.mean(aspec,axis=1))) #複素数のまま流す
@@ -60,11 +64,13 @@ plt.xlabel('s')
 cbar = plt.colorbar(m)
 cbar.ax.set_ylabel("dB")
 plt.title("Spec")
-fx = add_subplot()
-t,result = signal.istft(aspec, fs,window=('hamming'),nperseg=nfft)
-fx.plot(result)
-plt.title("Result: " + fname)
+#fx = add_subplot() 何日か後に見直した時誤解しそうなのであえて非表示
+
+#fx.plot(result)
+#plt.title("Result(Source->sftf): " + fname)
+
 fig.tight_layout()
 plt.show()
 
+t,result = signal.istft(aspec, fs,window=('hamming'),nperseg=nfft)
 wavefile.write_wav(result_path,fs,result)
