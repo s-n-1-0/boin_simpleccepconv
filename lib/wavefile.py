@@ -10,7 +10,7 @@ def read_wav(path):
     print("ファイルチェックはしません。読み込めるファイルについてはReadme.mdを参照してください。")
     w = wave.open(path, "r" )
     buf = w.readframes(w.getnframes())
-    return w.getnframes(), np.frombuffer(buf, dtype="int16")
+    return w.getframerate(), np.frombuffer(buf, dtype="int16")
 
 def write_wav(path,fs,wav):
     data  = normalize(wav)*2 - 1
