@@ -1,2 +1,9 @@
-# CepConvertTest
-複素ケプストラムを使用した単純な母音変換 / Simple vowel conversion using ccepstrum.
+# Boin-SimpleCCepConv
+複素ケプストラムを使用した単純な母音変換。<br>
+2年前に作った音声処理の副産物を課題のために掘り起こしてPythonで書き直したもの。<br>
+母音bの声で母音aを発声します。<br>
+例 a{Aさんの「あ」}とb{Bさんの「え」} → Bさんの「あ」
+
+### 注意
+事前に処理する部分を切り取ってください。
+
